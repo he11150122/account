@@ -1,6 +1,6 @@
 package java0313;
 import java.util.Scanner; //입력기능을 갖춤
-public class Accounttest 
+public class AccounTtest 
 {
 	public static void main(String[] args)
 	{
