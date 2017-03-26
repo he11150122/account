@@ -1,22 +1,32 @@
 package java0313;
-public class Account
-{
-	double balance;
- 	public Account(double getBalance) //변수선언과 동시에 변수를 집어넣음
+
+public class Account //인스턴트 변수 balance를 초기화하는 생성자를 가지는 Account 클래스
+{ 
+	private double balance; //balance라는 잔액을 저장하는 변수 선언 
+	
+	public Account(double initialBalance) //생성자메소드.Account 메소드 안에서 사용할 initialbalnce라는 변수 선언
 	{
-		balance=getBalance;
-	}
-	public void credit(double m) 
+		balance=initialBalance; //Account메소드에서 initialBalance는 balance
+	} //Account 생성자 끝
+
+	public void credit(double creditAmount) //계좌에 amount를 입금
 	{
-		balance=balance+m;
-	}
-	public void debit(double m)
+		balance=balance+creditAmount;
+	} //credit메서드 끝
+	
+	public void debit(double debitAmount) //계좌에 amount를 출금
 	{
-		if(m>balance) System.out.println("Debit amount exceeded account balance.");
-		else balance=balance-m;
-	}
-	public double balance()
+		if(balance-debitAmount >=0)
+			balance=balance-debitAmount;
+		else //0밑의 값이면 그대로 계산안하고 balance값 츌력하고 경고문 출력, 여러줄일땐 {}사용
+		{
+			balance=balance;
+			System.out.println("Debit amount exceeded account balance.");
+		}	
+	} //debit메서드 끝
+	//계좌 잔액을 반환
+	public double getBalance() //balance값 출력
 	{
-		return balance;
-	}
+		return balance; //balance값을 호출 메서드에 넘긴다
+	} //getBalance메서드 끝
 }
