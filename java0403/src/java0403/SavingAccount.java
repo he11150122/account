@@ -2,7 +2,7 @@ package java0403;
 
 import java0403.Account;
 
-public class SavingAccount extends Account
+public class SavingAccount extends Account implements Valuable
 {
 	private double interest,allDate;  //alldate:계좌를 만들고 얼마나 지났는지
 	private boolean contractState=false; //12달이 지났는지 안지났는지 판단, 처음만들어젺을땐 12달이 안지나서 false
@@ -44,4 +44,11 @@ public class SavingAccount extends Account
 		}
 				
 	}
+	public double EstimateValue(int month){
+		return getBalance()*Math.pow(1+interest,month);
+	}
+	public String toString(){
+		return String.format("SavingAccount_Balance:%.2f",getBalance());
+	}
+	
 }

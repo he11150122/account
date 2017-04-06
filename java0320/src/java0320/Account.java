@@ -20,11 +20,9 @@ public class Account //인스턴스 변수 balance를 초기화하는 생성자를 가지는 Accoun
 		if(balance>=money)
 			balance=balance-money;
 		else //0밑의 값이면 그대로 계산안하고 balance값 츌력하고 경고문 출력, 여러줄일땐 {}사용
-		{
-			System.out.println("Debit amount exceeded account balance.");
-		}	
-	} //debit메서드 끝
-	//계좌 잔액을 반환
+			System.out.println("Debit amount exceeded account balance.");			
+	} 
+	
 	public double getBalance() //balance값 출력
 	{
 		return balance; //balance값을 호출 메서드에 넘긴다

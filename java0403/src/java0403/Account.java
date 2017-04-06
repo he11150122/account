@@ -1,6 +1,6 @@
 package java0403;
 
-public abstract class Account implements Valuable 
+public abstract class Account  
 { 
 	
 	private double balance;
@@ -36,8 +36,7 @@ public abstract class Account implements Valuable
 	public abstract double getWithdrawableAccount();
 	public abstract void passTime(int date);
 	
-	public double EstimateValue(int month){
-		return month;
-	}
+
+	
 	
 }

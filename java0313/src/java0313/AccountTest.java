@@ -28,11 +28,12 @@ public class AccountTest //클래스명을 선언
 		System.out.println();
 		
 		System.out.printf("subtracting %.2f from account1 balance\n",debitAmount);
-		account1.debit(debitAmount); //account1계좌에서  입력받은 출금액을 뺸다
+		account1.debit(debitAmount);//account1계좌에서  입력받은 출금액을 뺸다
 		System.out.printf("account1 balance: $%.2f\n",account1.getBalance()); 
 		System.out.printf("account2 balance: $%.2f\n",account2.getBalance());
 		System.out.println();
 		
+		/*
 		//debit2
 		System.out.print("Enter withdrawal amount for account2:");
 		debitAmount=input.nextDouble(); //사용자 입력을 얻는다
@@ -67,6 +68,6 @@ public class AccountTest //클래스명을 선언
 		System.out.printf("account2 balance: $%.2f\n",account2.getBalance());
 		System.out.println();
 		
-		
+	*/	
 	}
 }

@@ -2,7 +2,7 @@ package java0403;
 
 import java0403.Account;
 
-public class CheckingAccount extends Account
+public class CheckingAccount extends Account implements Valuable
 {
 	private double creditLimit;
 	private double interest;
@@ -74,7 +74,14 @@ public class CheckingAccount extends Account
 			return true;
 		}
 	}
+	public double EstimateValue(int month){
+		setBalance(getBalance()*(1+interest*month));
+		return getBalance();
+	}
+	public String toString(){
+		return String.format("CheckingAccount_Balance:%.2f",getBalance());
+	}
+	
 }
-
 
 
