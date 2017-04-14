@@ -1,4 +1,4 @@
-package java0403;
+package java0410;
 
 public abstract class Account  
 { 
@@ -15,14 +15,21 @@ public abstract class Account
 		balance=balance+money;
 	} 
 	
-	public void debit(double money) 
+	public void debit(double amount) throws Exception
 	{
-		if(balance>=money)
-			balance=balance-money;
-		else 
+		
+		
+		if ( balance >= amount )
 		{
+			balance -= amount;
+			
+		}
+		else
+		{	
 			System.out.println("Debit amount exceeded account balance.");
-		}	
+			throw new Exception();
+		}
+		
 	} 
 	public double getBalance() 
 	{
@@ -35,4 +42,8 @@ public abstract class Account
 	
 	public abstract double getWithdrawableAccount();
 	public abstract void passTime(int date);
+	
+
+	
+	
 }

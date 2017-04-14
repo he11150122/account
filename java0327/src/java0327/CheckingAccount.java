@@ -1,7 +1,5 @@
 package java0327;
 
-import java0327.Account;
-
 public class CheckingAccount extends Account
 {
 	private double creditLimit;
@@ -52,16 +50,16 @@ public class CheckingAccount extends Account
 	}
 	public void passTime(int date)
 	{
-		double realInterest; //이자율(대출금리냐 그냥금리냐)
+	 //이자율(대출금리냐 그냥금리냐)
 		if (getBalance()>=0)
 		{
-			realInterest=interest; //잔액이 0이상이므로 일반금리
+			setBalance(getBalance()*(1+interest*date)); //잔액이 0이상이므로 일반금리
 		}
 		else
 		{
-			realInterest=loanInterest; //대출금리
+			setBalance(getBalance()*(1+loanInterest*date));
   		}
-		setBalance(getBalance()*(1+realInterest*date)); //잔액갱신 단리적용 
+		 //잔액갱신 단리적용 
 	}
 	public boolean isBankrupted()
 	{

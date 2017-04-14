@@ -1,4 +1,6 @@
-package java0403;
+package java0410;
+
+import java0410.Account;
 
 public class CheckingAccount extends Account implements Valuable
 {
@@ -24,16 +26,17 @@ public class CheckingAccount extends Account implements Valuable
 		}
 	}
 	@Override //부모클래스에 있는 함수를 재정의 하겠다
-	public void debit(double money)
+	public void debit(double amount) throws Exception
 	{
-		if (getBalance()-money>=-1*creditLimit)
+		if (getBalance()-amount<-1*creditLimit)
+			throw new Exception("오류입니다.");
+		else if (amount<0)
 		{
-			setBalance(getBalance()-money);
+			throw new Exception("음수입력!");
 		}
 		else
 		{
-			System.out.println("오류입니다.");
-	
+			setBalance(getBalance()-amount);
 		}
 	}	
 	
@@ -50,16 +53,16 @@ public class CheckingAccount extends Account implements Valuable
 	}
 	public void passTime(int date)
 	{
-	 //이자율(대출금리냐 그냥금리냐)
+		double realInterest; //이자율(대출금리냐 그냥금리냐)
 		if (getBalance()>=0)
 		{
-			setBalance(getBalance()*(1+interest*date)); //잔액이 0이상이므로 일반금리
+			realInterest=interest; //잔액이 0이상이므로 일반금리
 		}
 		else
 		{
-			setBalance(getBalance()*(1+loanInterest*date));
+			realInterest=loanInterest; //대출금리
   		}
-		 //잔액갱신 단리적용 
+		setBalance(getBalance()*(1+realInterest*date)); //잔액갱신 단리적용 
 	}
 	public boolean isBankrupted()
 	{
@@ -81,5 +84,6 @@ public class CheckingAccount extends Account implements Valuable
 	}
 	
 }
+
 
 

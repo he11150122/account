@@ -38,3 +38,4 @@ public abstract class Account //인스턴스 변수 balance를 초기화하는 생성자를 가지
 	public abstract void passTime(int date);
 	
 }
+

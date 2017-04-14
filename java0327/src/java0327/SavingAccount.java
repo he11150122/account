@@ -1,3 +1,4 @@
+
 package java0327;
 
 public class SavingAccount extends Account
@@ -7,14 +8,14 @@ public class SavingAccount extends Account
 	public SavingAccount(double inputBalance,double inputInterest)
 	{
 		super(inputBalance);
-		interest=inputInterest;
+		this.interest=inputInterest;
 		allDate = 0;
 	}
 	public void debit(double money)
 	{
 		if (contractState) //이 자체로 true인지 false인지 의미
 		{
-			setBalance(getBalance()-money);								
+			setBalance(getBalance()-money);						
 		}
 		else
 		{
@@ -35,10 +36,10 @@ public class SavingAccount extends Account
 	public void passTime(int date)
 	{
 		allDate=allDate+date;
-		if (allDate >= 12 && !contractState)
+		if (allDate >= 12 && (contractState==false))
 		{
-			contractState=true;
 			setBalance(getBalance()*Math.pow(1+interest, 12));  //추가이자가 없으므로 12			
+			contractState=true;
 		}
 				
 	}

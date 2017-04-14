@@ -1,4 +1,7 @@
-package java0403;
+package java0410;
+
+import java0410.Account;
+import java0410.Valuable;
 
 public class SavingAccount extends Account implements Valuable
 {
@@ -10,15 +13,15 @@ public class SavingAccount extends Account implements Valuable
 		interest=inputInterest;
 		allDate = 0;
 	}
-	public void debit(double money)
+	public void debit(double amount) throws Exception
 	{
 		if (contractState) //이 자체로 true인지 false인지 의미
-		{
-			setBalance(getBalance()-money);								
-		}
+			setBalance(getBalance()-amount);
+		else if(amount<0)
+			throw new Exception();
 		else
 		{
-			System.out.println("아직 출금할 수 없습니다.");
+			throw new Exception("아직 출금할 수 없습니다.");
 		}
 	}
 	public double getWithdrawableAccount()
@@ -36,9 +39,9 @@ public class SavingAccount extends Account implements Valuable
 	{
 		allDate=allDate+date;
 		if (allDate >= 12 && !contractState)
-		{			
-			setBalance(getBalance()*Math.pow(1+interest, 12));  //추가이자가 없으므로 12			
+		{
 			contractState=true;
+			setBalance(getBalance()*Math.pow(1+interest, 12));  //추가이자가 없으므로 12			
 		}
 				
 	}
