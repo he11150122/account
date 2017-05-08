@@ -1,6 +1,4 @@
-package java0410;
-
-import java0410.Account;
+package java0508;
 
 public class CheckingAccount extends Account implements Valuable
 {
@@ -49,16 +47,29 @@ public class CheckingAccount extends Account implements Valuable
 	}
 	public void passTime(int date)
 	{
-		double realInterest; //이자율(대출금리냐 그냥금리냐)
+		double realInterest; 
 		if (getBalance()>=0)
 		{
-			realInterest=interest; //잔액이 0이상이므로 일반금리
+			realInterest=interest; 
 		}
 		else
 		{
-			realInterest=loanInterest; //대출금리
+			realInterest=loanInterest; 
   		}
-		setBalance(getBalance()*(1+realInterest*date)); //잔액갱신 단리적용 
+		setBalance(getBalance()*(1+realInterest*date)); 
+	}
+	public void passTime()
+	{
+		double realInterest; 
+		if (getBalance()>=0)
+		{
+			realInterest=interest; 
+		}
+		else
+		{
+			realInterest=loanInterest; 
+  		}
+		setBalance(getBalance()*(1+realInterest*1)); 
 	}
 	public boolean isBankrupted()
 	{
@@ -75,11 +86,18 @@ public class CheckingAccount extends Account implements Valuable
 		setBalance(getBalance()*(1+interest*month));
 		return getBalance();
 	}
+	public double EstimateValue()
+	{
+		setBalance(getBalance()*(1+interest*1));
+		return getBalance();
+	}
+	
 	public String toString(){
 		return String.format("CheckingAccount_Balance:%.2f",getBalance());
 	}
 	
 }
+
 
 
 

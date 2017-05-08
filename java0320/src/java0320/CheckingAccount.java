@@ -32,7 +32,7 @@ public class CheckingAccount extends Account
 		}
 		else
 		{
-			System.out.println("오류입니다.");
+			System.out.println("출금할 수 없습니다.");
 	
 		}
 	}	

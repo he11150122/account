@@ -1,12 +1,9 @@
-package java0410;
-
-import java0410.Account;
-import java0410.Valuable;
+package java0508;
 
 public class SavingAccount extends Account implements Valuable
 {
-	private double interest,allDate;  //alldate:계좌를 만들고 얼마나 지났는지
-	private boolean contractState=false; //12달이 지났는지 안지났는지 판단, 처음만들어젺을땐 12달이 안지나서 false
+	private double interest,allDate;  
+	private boolean contractState=false; 
 	public SavingAccount(double inputBalance,double inputInterest)
 	{
 		super(inputBalance);
@@ -15,7 +12,7 @@ public class SavingAccount extends Account implements Valuable
 	}
 	public void debit(double amount) throws Exception
 	{
-		if (contractState) //이 자체로 true인지 false인지 의미
+		if (contractState) 
 			setBalance(getBalance()-amount);
 		else if(amount<0)
 			throw new Exception("음수입력!");
@@ -39,12 +36,24 @@ public class SavingAccount extends Account implements Valuable
 		if (allDate >= 12 && !contractState)
 		{
 			contractState=true;
-			setBalance(getBalance()*Math.pow(1+interest, 12));  //추가이자가 없으므로 12			
+			setBalance(getBalance()*Math.pow(1+interest, 12));  			
 		}
 				
 	}
+	public void passTime()
+	{
+		allDate=allDate+1;
+		if (allDate >= 12 && !contractState)
+		{
+			contractState=true;
+			setBalance(getBalance()*Math.pow(1+interest, 12));  			
+		}
+	}
 	public double EstimateValue(int month){
 		return getBalance()*Math.pow(1+interest,month);
+	}
+	public double EstimateValue(){
+		return getBalance()*Math.pow(1+interest,1);
 	}
 	public String toString(){
 		return String.format("SavingAccount_Balance:%.2f",getBalance());
