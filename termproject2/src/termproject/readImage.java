@@ -1,6 +1,7 @@
 package termproject;
 
 import java.awt.*;
+import java.awt.event.*;
 import java.awt.image.*;
 
 import javax.swing.*;
@@ -28,12 +29,15 @@ public class readImage extends Frame{
 			g.drawImage(this.bi, 0, 20, this);
 		}
 	}public static void main(String args[]){
+		WindowListener listen=new WindowAdapter(){     
+			public void windowClosing(WindowEvent ev){
+				System.exit(0);
+			}
+		};
+		
 		readImage itm=new readImage();
-		itm.setSize(300,400);
-		itm.setVisible(true);
+		itm.addWindowListener(listen);
+		itm.setBounds(300,200,300,400);
+		itm.setVisible(true);	
 	}
-
-	
-	
-	
 }
