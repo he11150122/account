@@ -1,6 +1,10 @@
-package termproject;
+package termproject2;
 
-import org.opencv.core.*; 
+import java.net.URL;
+import java.awt.*;
+import javax.swing.*;
+import org.opencv.core.*;
+import org.opencv.core.Point;
 import org.opencv.objdetect.CascadeClassifier;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
@@ -8,9 +12,9 @@ import org.opencv.imgproc.Imgproc;
 public class FaceDetection{
 	public static void main(String args[]){
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
- 
-        CascadeClassifier faceDetector = new CascadeClassifier(FaceDetection.class.getResource("haarcascade_frontalface_alt.xml").getPath());
-        Mat image = Imgcodecs.imread("/a.jpg",Imgcodecs.CV_LOAD_IMAGE_COLOR);
+
+        CascadeClassifier faceDetector = new CascadeClassifier(FaceDetection.class.getResource("haarcascade_frontalface_alt.xml").getPath().substring(1));
+        Mat image = Imgcodecs.imread(FaceDetection.class.getResource("face.jpg").getPath().substring(1));
         MatOfRect faceDetections = new MatOfRect();
         faceDetector.detectMultiScale(image, faceDetections);
  
@@ -20,9 +24,7 @@ public class FaceDetection{
         	Imgproc.rectangle(image, new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height),
                     new Scalar(0, 255, 0));
         }
-        String filename = "output.png";
-        System.out.println(String.format("Writing %s", filename));
-        Imgcodecs.imwrite(filename, image);
+
 		}
 }
 
